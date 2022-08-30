@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="cart">
+	<select id="getCart" resultType="cartDTO">
+		select * from carts
+	</select>
+	<select id="getBookData" resultType="cartDTO" parameterType="int">
+		select price from books where book_id=#{book_id}
+	</select>
+	<select id="insertIntoCart" parameterType="cartDTO">
+		insert into carts(count, book_id, member_id) value(#{count}, #{book_id}, #{member_id})
+	</select>
+</mapper>  
